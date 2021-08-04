@@ -14,14 +14,23 @@ Once installed and well configured, create a database and a table to work with.
 CREATE DATABASE test
 ```
 
-- Create a table, `todos`.
+- Create a table, `formulario`.
 
 ```SQL
-CREATE TABLE todos (
-  id SERIAL PRIMARY KEY,
-  title VARCHAR(100) NOT NULL,
-  checked  Boolean NOT NULL)
+CREATE TABLE public.clientes
+(
+    clienteid bigint NOT NULL DEFAULT nextval('"clientes_clienteId_seq"'::regclass),
+    nombres text COLLATE pg_catalog."default",
+    apellidos text COLLATE pg_catalog."default",
+    fechanacimiento text COLLATE pg_catalog."default",
+    created_at timestamp(0) without time zone,
+    updated_at timestamp(0) without time zone,
+    CONSTRAINT clientes_pkey PRIMARY KEY (clienteid)
+)
+
+TABLESPACE pg_default;
 ```
+
 
 ### Running the application
 
